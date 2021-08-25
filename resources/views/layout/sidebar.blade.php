@@ -39,66 +39,66 @@
         </button>
       </div>
     </li>
-    <li class="nav-item {{ set_active(['/'])}}">
+    <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
       <a class="nav-link" href="{{ url('/') }}">
         <i class="menu-icon mdi mdi-television"></i>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
-    <li class="nav-item {{ set_active(['basic-ui/*']) }}">
-      <a class="nav-link" data-toggle="collapse" href="#basic-ui" aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="basic-ui">
+    <li class="nav-item {{  Request::is(['basic-ui/*']) ? 'active' : '' }}">
+      <a class="nav-link" data-toggle="collapse" href="#basic-ui" aria-expanded="{{request()->is(['basic-ui/*']) ? 'active' : '' }}" aria-controls="basic-ui">
         <i class="menu-icon mdi mdi-dna"></i>
         <span class="menu-title">Basic UI Elements</span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse {{ show_class(['basic-ui/*']) }}" id="basic-ui">
+      <div class="collapse {{ request()->has(['basic-ui/*']) ? request()->get(['basic-ui/*']) : ''  }}" id="basic-ui">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item {{ set_active(['basic-ui/buttons']) }}">
+          <li class="nav-item {{ Request::is(['basic-ui/buttons']) ? 'active' : '' }}">
             <a class="nav-link" href="{{ url('/basic-ui/buttons') }}">Buttons</a>
           </li>
-          <li class="nav-item {{  set_active(['basic-ui/dropdowns'])}}">
+          <li class="nav-item {{   Request::is(['basic-ui/dropdowns']) ? 'active' : ''}}">
             <a class="nav-link" href="{{ url('/basic-ui/dropdowns') }}">Dropdowns</a>
           </li>
-          <li class="nav-item {{set_active(['basic-ui/typography']) }}">
+          <li class="nav-item {{ Request::is(['basic-ui/typography']) ? 'active' : ''}}">
             <a class="nav-link" href="{{ url('/basic-ui/typography') }}">Typography</a>
           </li>
         </ul>
       </div>
     </li>
 
-    <li class="nav-item {{  set_active('charts/chartjs') }}">
+    <li class="nav-item {{ Request::is('charts/chartjs') ? 'active' : '' }}">
       <a class="nav-link" href="{{ url('/charts/chartjs') }}">
         <i class="menu-icon mdi mdi-chart-line"></i>
         <span class="menu-title">Charts</span>
       </a>
     </li>
-    <li class="nav-item {{  set_active(['tables/basic-table']) }}">
+    <li class="nav-item {{  Request::is(['tables/basic-table']) ? 'active' : ''  }}">
       <a class="nav-link" href="{{ url('/tables/basic-table') }}">
         <i class="menu-icon mdi mdi-table-large"></i>
         <span class="menu-title">Tables</span>
       </a>
     </li>
-    <li class="nav-item {{ set_active(['icons/material'])  }}">
+    <li class="nav-item {{ Request::is(['icons/material']) ? 'active' : ''   }}">
       <a class="nav-link" href="{{ url('/icons/material') }}">
         <i class="menu-icon mdi mdi-emoticon"></i>
         <span class="menu-title">Icons</span>
       </a>
     </li>
-    <li class="nav-item {{ set_active(['user-pages/*']) }}">
-      <a class="nav-link" data-toggle="collapse" href="#user-pages" aria-expanded="{{   }}" aria-controls="user-pages">
+    <li class="nav-item {{  Request::is(['user-pages/*']) ? 'active' : ''  }}">
+      <a class="nav-link" data-toggle="collapse" href="#user-pages" aria-expanded="{{(request()->is(['user-pages/*'])) ? 'active' : ''  }}" aria-controls="user-pages">
         <i class="menu-icon mdi mdi-lock-outline"></i>
         <span class="menu-title">User Pages</span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse {{ show_class(['user-pages/*']) }}" id="user-pages">
+      <div class="collapse {{ request()->has(['user-pages/*']) ? request()->get(['user-pages/*']) : '' }}" id="user-pages">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item {{ set_active(['user-pages/login'])  }}">
+          <li class="nav-item {{  Request::is(['user-pages/login']) ? 'active' : ''   }}">
             <a class="nav-link" href="{{ url('/user-pages/login') }}">Login</a>
           </li>
-          <li class="nav-item {{set_active(['user-pages/register'])   }}">
+          <li class="nav-item {{ Request::is(['user-pages/register']) ? 'active' : ''    }}">
             <a class="nav-link" href="{{ url('/user-pages/register') }}">Register</a>
           </li>
-          <li class="nav-item {{ set_active(['user-pages/lock-screen']) }}">
+          <li class="nav-item {{ Request::is(['user-pages/lock-screen']) ? 'active' : ''  }}">
             <a class="nav-link" href="{{ url('/user-pages/lock-screen') }}">Lock Screen</a>
           </li>
         </ul>
